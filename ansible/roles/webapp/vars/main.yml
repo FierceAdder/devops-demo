@@ -1,0 +1,5 @@
+---
+app_user: devops
+app_dest: /opt/devops-demo
+app_port: 8080
+app_env: production
