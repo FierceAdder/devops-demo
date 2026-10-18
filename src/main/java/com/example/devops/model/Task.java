@@ -7,12 +7,9 @@ public class Task {
     private boolean completed;
 
     public Task() {}
-
     public Task(Long id, String title, String description, boolean completed) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.completed = completed;
+        this.id = id; this.title = title;
+        this.description = description; this.completed = completed;
     }
 
     public Long getId() { return id; }

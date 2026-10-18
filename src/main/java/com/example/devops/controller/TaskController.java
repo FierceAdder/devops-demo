@@ -4,7 +4,6 @@ import com.example.devops.model.Task;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -36,8 +35,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<Task> create(@RequestBody Task t) {
-        if (t.getTitle() == null || t.getTitle().isBlank())
-            return ResponseEntity.badRequest().build();
+        if (t.getTitle() == null || t.getTitle().isBlank()) return ResponseEntity.badRequest().build();
         t.setId(counter.getAndIncrement());
         save(t);
         return ResponseEntity.status(HttpStatus.CREATED).body(t);
@@ -45,8 +43,6 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        return store.remove(id) != null
-            ? ResponseEntity.noContent().build()
-            : ResponseEntity.notFound().build();
+        return store.remove(id) != null ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }

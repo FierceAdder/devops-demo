@@ -41,8 +41,7 @@ public class TaskControllerTest {
     void createTaskReturns201() throws Exception {
         String body = "{\"title\":\"Test CI task\",\"description\":\"Created in test\",\"completed\":false}";
         mockMvc.perform(post("/api/tasks")
-               .contentType(MediaType.APPLICATION_JSON)
-               .content(body))
+               .contentType(MediaType.APPLICATION_JSON).content(body))
                .andExpect(status().isCreated())
                .andExpect(jsonPath("$.title").value("Test CI task"));
     }
@@ -51,13 +50,12 @@ public class TaskControllerTest {
     void createTaskWithEmptyTitleReturnsBadRequest() throws Exception {
         String body = "{\"title\":\"\",\"description\":\"No title\",\"completed\":false}";
         mockMvc.perform(post("/api/tasks")
-               .contentType(MediaType.APPLICATION_JSON)
-               .content(body))
+               .contentType(MediaType.APPLICATION_JSON).content(body))
                .andExpect(status().isBadRequest());
     }
 
     @Test
-    void healthEndpointIsReachable() throws Exception {
+    void healthEndpointReachable() throws Exception {
         mockMvc.perform(get("/actuator/health"))
                .andExpect(status().isOk());
     }
