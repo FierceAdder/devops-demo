@@ -7,9 +7,7 @@ pipeline {
         MVN     = '/usr/local/bin/mvn'
     }
 
-    triggers {
-        pollSCM('* * * * *')
-    }
+    triggers { pollSCM('* * * * *') }
 
     stages {
         stage('Checkout') {
@@ -18,28 +16,19 @@ pipeline {
                 echo "Branch: ${env.GIT_BRANCH} | Commit: ${env.GIT_COMMIT}"
             }
         }
-
         stage('Test') {
-            steps {
-                sh '${MVN} test'
-            }
+            steps { sh '${MVN} test' }
             post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
+                always { junit 'target/surefire-reports/*.xml' }
             }
         }
-
         stage('Build') {
-            steps {
-                sh '${MVN} clean package -DskipTests'
-            }
+            steps { sh '${MVN} clean package -DskipTests' }
         }
-
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                echo "Build ${env.BUILD_NUMBER} archived successfully."
+                echo "Build ${env.BUILD_NUMBER} archived."
             }
         }
     }
