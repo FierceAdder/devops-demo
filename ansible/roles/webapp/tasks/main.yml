@@ -19,7 +19,7 @@
     group: "{{ app_user }}"
     mode: '0755'
 
-- name: Install Java runtime (OpenJDK 21)
+- name: Install Java runtime
   package:
     name: openjdk-21-jre-headless
     state: present
