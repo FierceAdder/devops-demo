@@ -1,6 +1,0 @@
----
-- name: restart devops-demo
-  systemd:
-    name: devops-demo
-    state: restarted
-    enabled: yes

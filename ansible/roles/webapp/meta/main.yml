@@ -1,5 +1,0 @@
----
-galaxy_info:
-  author: Ashmit Kumar Verma
-  description: Deploys the devops-demo Spring Boot application
-  min_ansible_version: "2.14"
