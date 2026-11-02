@@ -21,6 +21,3 @@ kubectl rollout status deployment/devops-demo
 echo ""
 kubectl get pods -l app=devops-demo
 kubectl get svc devops-demo-service
-
-echo ""
-echo "=== App URL: http://\$(minikube ip):30080/api/tasks ==="

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 DEPLOY="devops-demo"
 NS="default"
 
-echo "=== Current revision ==="
+echo "=== Current revision history ==="
 kubectl rollout history deployment/$DEPLOY -n $NS
 
 echo ""

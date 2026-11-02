@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 DEPLOY="devops-demo"
 NS="default"
 
@@ -22,6 +21,3 @@ kubectl get pods -l app=$DEPLOY -n $NS
 echo ""
 echo "=== Service info ==="
 kubectl get svc devops-demo-service -n $NS
-
-echo ""
-echo "=== Done. Access the app at: http://\$(minikube ip):30080/api/tasks ==="
