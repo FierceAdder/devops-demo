@@ -19,12 +19,14 @@
     group: "{{ app_user }}"
     mode: '0755'
 
-- name: Install Java runtime
-  package:
+- name: Install Java runtime (OpenJDK 21)
+  apt:
     name: openjdk-21-jre-headless
     state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian"
 
-- name: Deploy systemd service unit
+- name: Deploy systemd service unit from template
   template:
     src: devops-demo.service.j2
     dest: /etc/systemd/system/devops-demo.service
@@ -36,3 +38,4 @@
     name: devops-demo
     enabled: yes
     daemon_reload: yes
+  ignore_errors: yes

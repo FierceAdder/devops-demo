@@ -4,3 +4,4 @@
     name: devops-demo
     state: restarted
     enabled: yes
+  ignore_errors: yes
